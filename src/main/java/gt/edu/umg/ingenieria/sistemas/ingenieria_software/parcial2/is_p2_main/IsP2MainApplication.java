@@ -1,5 +1,7 @@
 package gt.edu.umg.ingenieria.sistemas.ingenieria_software.parcial2.is_p2_main;
 
+import gt.edu.umg.ingenieria.sistemas.ingenieria_software.parcial2.bubble_sort.service.BubbleSortService;
+import gt.edu.umg.ingenieria.sistemas.ingenieria_software.parcial2.insertion_sort.service.InsertionSortService;
 import gt.edu.umg.ingenieria.sistemas.ingenieria_software.parcial2.is_p2_selection_sort.service.SelectionSortStringService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -23,13 +25,18 @@ public class IsP2MainApplication implements CommandLineRunner {
         }
 
         SelectionSortStringService hola = new SelectionSortStringService();
+        BubbleSortService hola2 = new BubbleSortService();
+        InsertionSortService hola3 = new InsertionSortService();
+
+        //String[] newArray;
+        //newArray = hola.selectionSortString(args);
 
         String[] newArray;
-        newArray = hola.selectionSortString(args);
+        newArray = hola3.insertionSort(args,args.length);
 
-
-        for(int i = 0; i < newArray.length; i++){
-            System.out.println(newArray[i]);
+        for (String elemento: newArray
+             ) {
+            System.out.println(elemento);
         }
     }
 }

@@ -44,8 +44,29 @@
             <type>jar</type>
         </dependency>
         <dependency>
+            <groupId>gt.edu.umg.ingenieria.sistemas.ingenieria_software.parcial2</groupId>
+            <artifactId>bubble_sort</artifactId>
+            <version>v1</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>gt.edu.umg.ingenieria.sistemas.ingenieria_software.parcial2</groupId>
+            <artifactId>insertion_sort</artifactId>
+            <version>v1</version>
+        </dependency>
+        <dependency>
+            <groupId>gt.edu.umg.ingenieria.sistemas.ingenieria_software.parcial2</groupId>
+            <artifactId>generic_sort</artifactId>
+            <version>v1</version>
+        </dependency>
+        <dependency>
+            <groupId>gt.edu.umg.ingenieria.sistemas.ingenieria_software.parcial2</groupId>
+            <artifactId>reverse_sort</artifactId>
+            <version>v1</version>
         </dependency>
     </dependencies>
 
