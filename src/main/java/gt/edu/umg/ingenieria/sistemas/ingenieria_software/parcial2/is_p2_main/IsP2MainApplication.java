@@ -1,12 +1,12 @@
 package gt.edu.umg.ingenieria.sistemas.ingenieria_software.parcial2.is_p2_main;
 
-import gt.edu.umg.ingenieria.sistemas.ingenieria_software.parcial2.bubble_sort.service.BubbleSortService;
-import gt.edu.umg.ingenieria.sistemas.ingenieria_software.parcial2.insertion_sort.service.InsertionSortService;
-import gt.edu.umg.ingenieria.sistemas.ingenieria_software.parcial2.is_p2_selection_sort.service.SelectionSortStringService;
+import gt.edu.umg.ingenieria.sistemas.ingenieria_software.parcial2.is_p2_main.service.ISortAlgorithm;
+import gt.edu.umg.ingenieria.sistemas.ingenieria_software.parcial2.is_p2_main.service.SortFactoryService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.util.Scanner;
 
 
 @SpringBootApplication
@@ -18,25 +18,59 @@ public class IsP2MainApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        // Check if a command line argument exists
-        // Display the arguments from the command line
-        for (int counter = 0; counter < args.length; counter++) {
-            System.out.println("argument index " + counter + ": " + args[counter]);
-        }
-
-        SelectionSortStringService hola = new SelectionSortStringService();
-        BubbleSortService hola2 = new BubbleSortService();
-        InsertionSortService hola3 = new InsertionSortService();
-
-        //String[] newArray;
-        //newArray = hola.selectionSortString(args);
-
-        String[] newArray;
-        newArray = hola3.insertionSort(args,args.length);
-
-        for (String elemento: newArray
-             ) {
-            System.out.println(elemento);
+        if (args.length==0){
+            System.out.println("No parameters");;
+        }else{
+            menu(args);
         }
     }
+
+    public static void menu(String[] args){
+        Scanner scanner = new Scanner(System.in);
+        SortFactoryService sortFactoryService = new SortFactoryService();
+        ISortAlgorithm sortAlgorithm;
+        int sortOption = 0;
+        do {
+
+            System.out.println("- - - - - - - - - - - - - - -");
+            System.out.println("        MENU");
+            System.out.println("    BUBBLE      SORT  (1)");
+            System.out.println("    GENERIC     SORT  (2)");
+            System.out.println("    INSERTION   SORT  (3)");
+            System.out.println("    REVERSE     SORT  (4)");
+            System.out.println("    SELECTION   SORT  (5)");
+            System.out.println("        EXIT          (0)");
+            System.out.println("- - - - - - - - - - - - - - -");
+            sortOption = Integer.parseInt(scanner.nextLine());
+
+            switch (sortOption) {
+                case 0:
+                    System.exit(0);
+                case 1:
+                    sortAlgorithm = sortFactoryService.sort("BUBBLE");
+                    sortAlgorithm.sort(args);
+                    break;
+                case 2:
+                    sortAlgorithm = sortFactoryService.sort("GENERIC");
+                    sortAlgorithm.sort(args);
+                    break;
+                case 3:
+                    sortAlgorithm = sortFactoryService.sort("INSERTION");
+                    sortAlgorithm.sort(args);
+                    break;
+                case 4:
+                    sortAlgorithm = sortFactoryService.sort("REVERSE");
+                    sortAlgorithm.sort(args);
+                    break;
+                case 5:
+                    sortAlgorithm = sortFactoryService.sort("SELECTION");
+                    sortAlgorithm.sort(args);
+                    break;
+                default:
+                    System.out.println("NOT VALID OPTION");
+                    break;
+            }
+        }while (sortOption!=0);
+    }
+
 }
